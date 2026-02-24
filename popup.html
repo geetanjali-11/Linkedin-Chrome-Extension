@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Connector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LinkedIn Connector</h1>
+        </header>
+
+        <section class="config">
+            <div class="input-group">
+                <label for="sheetId">Google Sheet ID</label>
+                <input type="text" id="sheetId" placeholder="Enter Spreadsheet ID">
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="inviteCap">Invite Cap</label>
+                    <input type="number" id="inviteCap" value="50" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="batchSize">Batch Size</label>
+                    <input type="number" id="batchSize" value="10" min="1">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="cooldownTime">Cooldown (min)</label>
+                <input type="number" id="cooldownTime" value="5" min="1">
+            </div>
+        </section>
+
+        <section class="controls">
+            <button id="startBtn" class="primary">Start Automation</button>
+            <button id="stopBtn" class="secondary" disabled>Stop</button>
+        </section>
+
+        <section class="status">
+            <div id="progressContainer" class="hidden">
+                <p id="progressLabel">Progress: 0 / 0</p>
+                <div class="progress-bar">
+                    <div id="progressBarFill" style="width: 0%"></div>
+                </div>
+            </div>
+            <div id="cooldownTimer" class="hidden">
+                <p>Cooldown active: <span id="timerText">00:00</span></p>
+            </div>
+            <div id="statusLog" class="log-container">
+                <p class="placeholder">Logs will appear here...</p>
+            </div>
+        </section>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
