@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn Sheets Connector",
+  "version": "1.0",
+  "description": "Automate LinkedIn connection requests using data from Google Sheets.",
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage",
+    "identity",
+    "activeTab",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://*.linkedin.com/*",
+    "https://sheets.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "oauth2": {
+    "client_id": "219927913265-nopvuma81egurek0n3iha1divjq9l098.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.linkedin.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
